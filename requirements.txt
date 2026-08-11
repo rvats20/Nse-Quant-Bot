@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+requests
+numba
+streamlit
+upstox-python
