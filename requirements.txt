@@ -5,3 +5,4 @@ requests
 numba
 streamlit
 upstox-python
+pytest
