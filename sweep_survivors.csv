@@ -1,0 +1,13 @@
+strategy,params,trades,win_rate,total_pnl,avg_pnl,worst_trade,max_losing_streak,gate_passed
+iron_condor,"{'wing': 150, 'otm': 0}",50,48.0,27858,605.6,-2731,4,True
+iron_condor,"{'wing': 150, 'otm': 50}",50,48.0,42000,913.1,-3995,4,True
+iron_condor,"{'wing': 150, 'otm': 100}",50,54.0,50246,1092.3,-5410,4,True
+iron_condor,"{'wing': 200, 'otm': 0}",50,48.0,45420,987.4,-4276,4,True
+iron_condor,"{'wing': 200, 'otm': 50}",50,52.0,59952,1303.3,-6238,4,True
+iron_condor,"{'wing': 200, 'otm': 100}",50,56.0,65270,1418.9,-8014,3,True
+iron_condor,"{'wing': 250, 'otm': 0}",50,52.0,64387,1399.7,-6519,4,True
+iron_condor,"{'wing': 250, 'otm': 50}",50,54.0,76270,1658.1,-8842,4,True
+iron_condor,"{'wing': 250, 'otm': 100}",50,58.0,79107,1719.7,-10917,3,True
+iron_condor,"{'wing': 300, 'otm': 0}",50,54.0,83146,1807.5,-9123,4,True
+iron_condor,"{'wing': 300, 'otm': 50}",50,56.0,90691,1971.6,-11744,3,True
+iron_condor,"{'wing': 300, 'otm': 100}",50,60.0,90497,1967.3,-14057,3,True

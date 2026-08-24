@@ -18,7 +18,11 @@ def compute_gex(df):
             sigma
         )
 
-        exposure=g*row["oi"]*100
+        # Dealer positioning convention: dealers are short calls /
+        # long puts, so put gamma enters GEX with negative sign.
+        sign=-1 if row["type"]=="put" else 1
+
+        exposure=sign*g*row["oi"]*100
 
         exposures.append({
             "strike":row["strike"],

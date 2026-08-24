@@ -12,9 +12,11 @@ def fetch_option_chain():
 
     session = requests.Session()
 
-    session.get("https://www.nseindia.com", headers=headers)
+    session.get("https://www.nseindia.com", headers=headers, timeout=15)
 
-    data = session.get(URL, headers=headers).json()
+    resp = session.get(URL, headers=headers, timeout=15)
+    resp.raise_for_status()
+    data = resp.json()
 
     rows = []
 

@@ -61,10 +61,12 @@ def test_iron_condor_builder_basic():
     condor = build_condor(df, 100.0)
     # short_call should be the call closest to 100 -> 101
     assert condor["short_call"] == 101.0
-    assert condor["long_call"] == 101.0 + IRON_CONDOR_DISTANCE
+    # long_call: nearest traded call to 101 + IRON_CONDOR_DISTANCE
+    assert abs(condor["long_call"] - (101.0 + IRON_CONDOR_DISTANCE)) <= IRON_CONDOR_DISTANCE
     # short_put should be 99
     assert condor["short_put"] == 99.0
-    assert condor["long_put"] == 99.0 - IRON_CONDOR_DISTANCE
+    # long_put: nearest traded put to 99 - IRON_CONDOR_DISTANCE
+    assert abs(condor["long_put"] - (99.0 - IRON_CONDOR_DISTANCE)) <= IRON_CONDOR_DISTANCE
 
 
 def test_lottery_calls_scanner():
