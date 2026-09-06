@@ -2,6 +2,6 @@ numpy
 pandas
 scipy
 requests
-numba
 streamlit
 pytest
+yfinance==1.7.0

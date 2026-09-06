@@ -1,2 +1,5 @@
 .venv/
+__pycache__/
+*.pyc
 backtest_results.csv
+sweep_survivors.csv

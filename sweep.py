@@ -83,7 +83,7 @@ def evaluate(pnls, credits=None):
     gate = {
         "profitable": bool(total > 0),
         "streak_ok": bool(streak <= 6),
-        "tail_ok": bool(abs(worst) <= max(3 * abs(credits.mean()), 1e9)) if credits is not None else True,
+        "tail_ok": bool(abs(worst) <= 3 * abs(credits.mean())) if credits is not None else True,
     }
     return {
         "trades": len(t), "win_rate": round(100 * (t > 0).mean(), 1),
@@ -129,6 +129,8 @@ def main():
     for ivmin, wing, otm in itertools.product([0.3, 0.5, 0.7], [150, 200, 250, 300], [0, 50, 100]):
         pnls, credits = [], []
         for spot_in, spot_out, Tin, Tout, sigma, iv_rank, crash in cycles:
+            if pd.isna(sigma):
+                continue  # insufficient history for realized vol
             if crash or iv_rank < ivmin:
                 continue  # regime filters: skip cheap-vol and panic weeks
             grid = strike_grid(spot_in)
@@ -159,6 +161,8 @@ def main():
     for dist, cap, step in lottery_grid:
         pnls = []
         for spot_in, spot_out, Tin, _, sigma, iv_rank, crash in cycles:
+            if pd.isna(sigma):
+                continue  # insufficient history for realized vol
             if crash or iv_rank > 0.7:
                 continue  # lottery calls are long-vol: skip panic weeks and only buy cheap vol
             pnls.append(lottery_pnl(spot_in, spot_out, Tin, sigma, dist, cap, step))

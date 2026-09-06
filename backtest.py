@@ -63,6 +63,8 @@ def backtest(df):
         T_entry = max((expiry - entry).days / 365.0, 1 / 365)
         T_exit = 1 / 365 * 0.5  # ~half a day left at close on expiry day
         sigma = realized_vol(df["close"].loc[:entry])
+        if pd.isna(sigma):
+            continue  # insufficient history for realized vol
 
         # ---- Iron Condor ----
         grid = strike_grid(spot_entry)
